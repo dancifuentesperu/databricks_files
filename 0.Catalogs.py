@@ -1,4 +1,3 @@
-# Databricks notebook source
 ###############################################
 #          Author: Daniel Cifuentes           #
 #          Last update: 22/06/2025            #
@@ -11,6 +10,16 @@ schema_name_raw     = "raw_files"
 volume_name_raw     = "files"
 volume_name_tmp     = "tmp"
 schema_name_tables  = "raw_tables"
+
+# BRONZE
+schema_name_bronze  = "bronze_layer"
+table_name_bronze   = "titanic_bronze"
+# SILVER
+schema_name_silver  = "silver_layer"
+table_name_silver   = "titanic_silver"
+# GOLD
+schema_name_gold  = "gold_layer"
+table_name_gold   = "titanic_gold"
 
 
 # COMMAND ----------
@@ -39,6 +48,20 @@ spark.sql(f"""
 CREATE VOLUME IF NOT EXISTS {catalog_name}.{schema_name_raw}.{volume_name_tmp}
 """)
 
+# COMMAND ----------
+
+## Crear los esquemas de bronze, silver y gold 
+
+## Este script llevar al main 
+## Creación de esquemas Bronze, silver y gold 
+
+full_schema_path_bronze = f"{catalog_name}.{schema_name_bronze}"
+full_schema_path_silver = f"{catalog_name}.{schema_name_silver}"
+full_schema_path_gold   = f"{catalog_name}.{schema_name_gold}"
+
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {full_schema_path_bronze}")
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {full_schema_path_silver}")
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {full_schema_path_gold}")
 # COMMAND ----------
 
 
