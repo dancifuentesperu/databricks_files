@@ -21,7 +21,7 @@ table_name_silver   = "titanic_silver"
 schema_name_gold  = "gold_layer"
 table_name_gold   = "titanic_gold"
 
-
+workspace_folder       = "lab4"
 # COMMAND ----------
 
 # Crear catálogo
